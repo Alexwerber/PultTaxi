@@ -5,7 +5,7 @@ import dagger.android.ContributesAndroidInjector
 import xaa.werber.pulttaxi.ui.activities.MainActivity
 
 @Module
-abstract class ActivityBuilder {
+abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(modules = arrayOf(FragmentBuilderModule::class))
     abstract fun mainActivity(): MainActivity
 }
