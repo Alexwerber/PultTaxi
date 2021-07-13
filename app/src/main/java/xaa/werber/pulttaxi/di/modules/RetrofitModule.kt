@@ -7,6 +7,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import xaa.werber.pulttaxi.data.remote.ApiService
+import xaa.werber.pulttaxi.utils.ApiConstants.BASE_URL
+import xaa.werber.pulttaxi.utils.ApiConstants.READ_TIMEOUT
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
