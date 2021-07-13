@@ -3,6 +3,7 @@ package xaa.werber.pulttaxi.data.remote
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
+import xaa.werber.pulttaxi.data.entity.UserInfo
 
 interface ApiService {
     // Запрос смс кода
