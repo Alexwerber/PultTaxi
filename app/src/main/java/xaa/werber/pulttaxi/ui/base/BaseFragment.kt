@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.AndroidSupportInjection
+import xaa.werber.pulttaxi.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
 abstract class BaseFragment<V: ViewModel>: Fragment() {
