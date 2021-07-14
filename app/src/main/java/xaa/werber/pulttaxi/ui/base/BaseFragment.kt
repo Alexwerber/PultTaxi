@@ -8,17 +8,12 @@ import dagger.android.support.AndroidSupportInjection
 import xaa.werber.pulttaxi.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
-abstract class BaseFragment<V: ViewModel>: Fragment() {
+abstract class BaseFragment: Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    lateinit var viewModel: ViewModel
-
-    abstract fun getViewModel(): Class<V>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(getViewModel())
     }
 }
