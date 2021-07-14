@@ -40,6 +40,7 @@
                 android:id="@+id/phone_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:background="#047BF8"
                 android:gravity="center"
                 android:textColor="@color/white" />
