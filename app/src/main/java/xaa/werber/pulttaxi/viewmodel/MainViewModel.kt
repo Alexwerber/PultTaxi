@@ -10,6 +10,7 @@ class MainViewModel(private val repository: MainRepository): ViewModel() {
     private lateinit var phoneNumber: String
 
     fun getUserInfo(): LiveData<UserInfo> = repository.getUseInfo()
+    fun getToken(): String? = repository.getToken()
 
     fun getSMSCodeFromNetwork(number: String): String {
         val status = repository.SMSCodeRequest(number)

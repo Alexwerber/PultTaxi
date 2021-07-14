@@ -16,7 +16,7 @@ class MainRepository(val apiService: ApiService, val pultTaxiDao: PultTaxiDao, v
     private lateinit var sharedPreferences: SharedPreferences
 
     init {
-        //init sherPref
+        sharedPreferences = context.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
     }
 
     fun getToken(): String? = sharedPreferences.getString("TOKEN", null)
