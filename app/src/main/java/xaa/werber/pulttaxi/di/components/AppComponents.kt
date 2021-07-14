@@ -7,12 +7,14 @@ import dagger.android.AndroidInjectionModule
 import xaa.werber.pulttaxi.PultTaxiApp
 import xaa.werber.pulttaxi.di.builders.ActivityBuilderModule
 import xaa.werber.pulttaxi.di.modules.*
+import xaa.werber.pulttaxi.ui.fragments.PhoneInputFragment
+import xaa.werber.pulttaxi.ui.fragments.SMSInputFragment
 import javax.inject.Singleton
 
 @Component(modules = [
+    RepositoryModule::class,
     AndroidInjectionModule::class,
     ActivityBuilderModule::class,
-    RepositoryModule::class,
     ViewModelModule::class,
     RetrofitModule::class,
     DatabaseModule::class,
@@ -27,5 +29,5 @@ interface AppComponents {
         fun build(): AppComponents
     }
 
-    fun inject(app: PultTaxiApp)
+    fun inject(pultTaxiApp: PultTaxiApp)
 }
