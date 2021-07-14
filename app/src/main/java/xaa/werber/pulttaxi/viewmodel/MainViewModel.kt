@@ -13,7 +13,7 @@ class MainViewModel(private val repository: MainRepository): ViewModel() {
     fun getToken(): String? = repository.getToken()
 
     fun getSMSCodeFromNetwork(number: String): String {
-        val status = repository.SMSCodeRequest(number)
+        val status = repository.smsCodeRequest(number)
 
         if (status == "success") {
             phoneNumber = number

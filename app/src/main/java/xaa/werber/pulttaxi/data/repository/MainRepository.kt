@@ -20,7 +20,7 @@ class MainRepository(private val apiService: ApiService, private val pultTaxiDao
     fun getToken(): String? = sharedPreferences.getString(TOKEN, null)
     fun getUseInfo(): LiveData<UserInfo> = pultTaxiDao.getUserInfo()
 
-    fun SMSCodeRequest(number: String): String = apiService.SMSCodeRequest(number)
+    fun smsCodeRequest(number: String): String = apiService.SMSCodeRequest(number)
 
     fun authorization(number: String, password: String) {
         apiService.authorization(number, password).enqueue(object : Callback<String> {
