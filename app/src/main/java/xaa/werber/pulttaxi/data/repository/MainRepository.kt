@@ -9,17 +9,15 @@ import retrofit2.Response
 import xaa.werber.pulttaxi.data.entity.UserInfo
 import xaa.werber.pulttaxi.data.local.dao.PultTaxiDao
 import xaa.werber.pulttaxi.data.remote.ApiService
+import xaa.werber.pulttaxi.utils.SharedPreferencesConstants.TOKEN
 import java.util.concurrent.Executors
 
-class MainRepository(val apiService: ApiService, val pultTaxiDao: PultTaxiDao, val context: Context) {
+class MainRepository(private val apiService: ApiService, private val pultTaxiDao: PultTaxiDao, private val context: Context) {
 
-    private lateinit var sharedPreferences: SharedPreferences
+    private var sharedPreferences: SharedPreferences =
+        context.getSharedPreferences(TOKEN, Context.MODE_PRIVATE)
 
-    init {
-        sharedPreferences = context.getSharedPreferences("TOKEN", Context.MODE_PRIVATE)
-    }
-
-    fun getToken(): String? = sharedPreferences.getString("TOKEN", null)
+    fun getToken(): String? = sharedPreferences.getString(TOKEN, null)
     fun getUseInfo(): LiveData<UserInfo> = pultTaxiDao.getUserInfo()
 
     fun SMSCodeRequest(number: String): String = apiService.SMSCodeRequest(number)
@@ -29,7 +27,7 @@ class MainRepository(val apiService: ApiService, val pultTaxiDao: PultTaxiDao, v
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        sharedPreferences.edit().putString("TOKEN", response.body())
+                        sharedPreferences.edit().putString(TOKEN, response.body())
                         getUserInfoFromNetwork(response.body()!!)
                     }
                 }
