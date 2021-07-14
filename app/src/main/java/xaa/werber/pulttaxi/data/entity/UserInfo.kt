@@ -9,7 +9,7 @@ data class UserInfo(
     var id: Int = 1,
 
     var status: Int? = null,
-    var phone_number: String? = null,
+    var phone_number: String = "",
     var name: String? = null,
     var email: String? = null,
     var sex: String? = null,
@@ -18,5 +18,5 @@ data class UserInfo(
     var rating: String? = null,
     var active_order: Int? = null,
     var organization_id: Int? = null,
-    var need_registration: Boolean
+    var need_registration: Boolean,
 )

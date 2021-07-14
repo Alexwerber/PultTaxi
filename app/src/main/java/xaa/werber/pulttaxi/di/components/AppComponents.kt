@@ -6,10 +6,7 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import xaa.werber.pulttaxi.PultTaxiApp
 import xaa.werber.pulttaxi.di.builders.ActivityBuilderModule
-import xaa.werber.pulttaxi.di.modules.DatabaseModule
-import xaa.werber.pulttaxi.di.modules.RepositoryModule
-import xaa.werber.pulttaxi.di.modules.RetrofitModule
-import xaa.werber.pulttaxi.di.modules.ViewModelModule
+import xaa.werber.pulttaxi.di.modules.*
 import javax.inject.Singleton
 
 @Component(modules = [
@@ -18,7 +15,8 @@ import javax.inject.Singleton
     RepositoryModule::class,
     ViewModelModule::class,
     RetrofitModule::class,
-    DatabaseModule::class
+    DatabaseModule::class,
+    AppModule::class
 ])
 @Singleton
 interface AppComponents {

@@ -38,9 +38,7 @@ class SMSInputFragment: BaseFragment() {
     private fun inputSMS() {
         sms_confirm_button.setOnClickListener() {
             if (sms_input.text?.equals("") == true) {
-                viewModel.getPhoneNumber()?.let {
-                    viewModel.getTokenFromNetwork(it, sms_input.text.toString())
-                }
+                viewModel.getTokenFromNetwork(sms_input.text.toString())
                 // show dialog
             }
             else sms_input.error = "Введите код"
