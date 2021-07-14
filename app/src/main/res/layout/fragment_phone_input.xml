@@ -43,6 +43,7 @@
                 android:inputType="phone"
                 android:background="#047BF8"
                 android:gravity="center"
+                android:textSize="18dp"
                 android:textColor="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>

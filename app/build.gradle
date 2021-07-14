@@ -82,10 +82,7 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
-    // verification view
-    final verification_view = '1.4.4'
-
-    implementation "io.github.chaosleung:pinview:$verification_view"
+    implementation "com.github.GoodieBag:Pinview:v1.4"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'

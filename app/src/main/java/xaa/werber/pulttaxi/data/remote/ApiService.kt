@@ -10,7 +10,7 @@ interface ApiService {
     @GET("requestSMSCodeClient")
     fun SMSCodeRequest(
         @Query("phone_number") number: String
-    ) : String
+    ) : Call<String>
 
     // Авторизация через СМС код
     @GET("authenticateClients")
