@@ -7,20 +7,20 @@ import xaa.werber.pulttaxi.data.entity.UserInfo
 
 interface ApiService {
     // Запрос смс кода
-    @GET("/requestSMSCodeClient")
+    @GET("requestSMSCodeClient")
     fun SMSCodeRequest(
         @Query("phone_number") number: String
     ) : String
 
     // Авторизация через СМС код
-    @GET("/authenticateClients")
+    @GET("authenticateClients")
     fun authorization(
         @Query("phone_number") number: String,
         @Query("password") password: String
     ) : Call<String>
 
     // Получение информации о клиенте
-    @GET("/client/getInfo")
+    @GET("client/getInfo")
     fun getUserInfo(
         @Query("token") token: String
     ) : Call<UserInfo>

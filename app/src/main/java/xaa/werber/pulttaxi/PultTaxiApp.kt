@@ -4,6 +4,7 @@ import android.app.Application
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import xaa.werber.pulttaxi.di.components.AppComponents
 import xaa.werber.pulttaxi.di.components.DaggerAppComponents
 import javax.inject.Inject
 
