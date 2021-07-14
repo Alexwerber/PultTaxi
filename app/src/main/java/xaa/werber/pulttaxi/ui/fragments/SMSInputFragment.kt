@@ -44,6 +44,12 @@ class SMSInputFragment: Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
+        viewModel.getUserInfo().observe(this, {
+            if (it.phone_number != "") {
+                //show dialog
+            }
+        })
+
         inputSMS()
     }
 
@@ -51,7 +57,6 @@ class SMSInputFragment: Fragment() {
         sms_confirm_button.setOnClickListener() {
             if (CheckInput.checkSMSCode(sms_input.value.toString())) {
                 viewModel.getTokenFromNetwork(sms_input.value.toString())
-                // show dialog
             }
         }
     }
