@@ -1,8 +1,14 @@
 package xaa.werber.pulttaxi.data.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "userInfo")
 data class UserInfo(
+    @PrimaryKey
+    var id: Int = 1,
+
     var status: Int? = null,
-    var id: Int? = null,
     var phone_number: String? = null,
     var name: String? = null,
     var email: String? = null,
