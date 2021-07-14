@@ -11,7 +11,7 @@ import xaa.werber.pulttaxi.data.local.dao.PultTaxiDao
 import xaa.werber.pulttaxi.data.remote.ApiService
 import java.util.concurrent.Executors
 
-class MainRepository(val apiService: ApiService, val pultTaxiDao: PultTaxiDao) {
+class MainRepository(val apiService: ApiService, val pultTaxiDao: PultTaxiDao, val context: Context) {
 
     private lateinit var sharedPreferences: SharedPreferences
 
