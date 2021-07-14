@@ -1,21 +1,31 @@
 package xaa.werber.pulttaxi.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import xaa.werber.pulttaxi.data.entity.UserInfo
 import xaa.werber.pulttaxi.data.repository.MainRepository
 
 class MainViewModel(private val repository: MainRepository): ViewModel() {
 
-    fun getPhoneNumber(): String = repository.getPhoneNumber()
+    private lateinit var phoneNumber: String
 
-    fun getSMSCodeFromNetwork(number: String) {
-        repository.SMSCodeRequest(number)
+    fun getUserInfo(): LiveData<UserInfo> = repository.getUseInfo()
+
+    fun getSMSCodeFromNetwork(number: String): String {
+        val status = repository.SMSCodeRequest(number)
+
+        if (status == "success") {
+            phoneNumber = number
+            return status
+        } else
+            return "error"
     }
 
-    fun getTokenFromNetwork(number: String, password: String) {
-        repository.authorization(number, password)
+    fun getTokenFromNetwork(password: String) {
+        repository.authorization(phoneNumber, password)
     }
 
     fun getUserInfoFromNetwork(token: String) {
-        repository.getUserInfo(token)
+        repository.getUserInfoFromNetwork(token)
     }
 }

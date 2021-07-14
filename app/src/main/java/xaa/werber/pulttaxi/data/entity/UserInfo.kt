@@ -18,5 +18,5 @@ data class UserInfo(
     var rating: String? = null,
     var active_order: Int? = null,
     var organization_id: Int? = null,
-    var need_registration: Boolean
+    var need_registration: Boolean,
 )

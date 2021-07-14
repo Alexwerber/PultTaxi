@@ -38,13 +38,13 @@ class PhoneInputFragment: BaseFragment() {
     private fun inputPhone() {
         confirm_button.setOnClickListener() {
             if (phone_input.text?.equals("") == false) {
-                viewModel.getSMSCodeFromNetwork(phone_input.text.toString())
-                activity?.let {
-                    it.
-                        supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, SMSInputFragment())
-                        .commit()
+                if (viewModel.getSMSCodeFromNetwork(phone_input.text.toString()) == "success") {
+                    activity?.let {
+                        it.supportFragmentManager
+                            .beginTransaction()
+                            .replace(R.id.fragment_container, SMSInputFragment())
+                            .commit()
+                    }
                 }
             }
             else phone_input.error = "Неверный формат номера"
