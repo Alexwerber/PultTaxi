@@ -21,17 +21,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/sms_input"/>
 
-    <com.chaos.view.PinView
+    <com.goodiebag.pinview.Pinview
         android:id="@+id/sms_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:pinWidth="64dp"
+        app:pinHeight="64dp"
         android:layout_marginLeft="38dp"
         android:layout_marginRight="38dp"
         android:layout_marginTop="24dp"
-        app:itemHeight="64dp"
-        app:itemWidth="64dp"
-        app:itemRadius="12dp"
-        app:itemSpacing="14.02dp"
+        app:pinLength="4"
+        app:forceKeyboard="true"
+        app:hint="0"
+        app:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sms_main_text"/>

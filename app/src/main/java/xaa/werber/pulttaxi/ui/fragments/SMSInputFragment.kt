@@ -1,16 +1,21 @@
 package xaa.werber.pulttaxi.ui.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.fragment_sms_code_input.*
 import xaa.werber.pulttaxi.PultTaxiApp
 import xaa.werber.pulttaxi.R
+import xaa.werber.pulttaxi.error.CheckInput
 import xaa.werber.pulttaxi.viewmodel.MainViewModel
 import xaa.werber.pulttaxi.viewmodel.ViewModelFactory
 import javax.inject.Inject
@@ -44,11 +49,10 @@ class SMSInputFragment: Fragment() {
 
     private fun inputSMS() {
         sms_confirm_button.setOnClickListener() {
-            if (sms_input.text?.equals("") == true) {
-                viewModel.getTokenFromNetwork(sms_input.text.toString())
+            if (CheckInput.checkSMSCode(sms_input.value.toString())) {
+                viewModel.getTokenFromNetwork(sms_input.value.toString())
                 // show dialog
             }
-            else sms_input.error = "Введите код"
         }
     }
 
