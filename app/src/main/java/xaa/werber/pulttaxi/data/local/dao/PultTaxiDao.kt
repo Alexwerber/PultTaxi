@@ -10,7 +10,7 @@ import xaa.werber.pulttaxi.data.entity.UserInfo
 @Dao
 interface PultTaxiDao {
     @Query("SELECT * FROM userInfo")
-    fun getUserInfo(): LiveData<UserInfo>
+    fun getUserInfo(): UserInfo
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun safeUserInfo(userInfo: UserInfo)

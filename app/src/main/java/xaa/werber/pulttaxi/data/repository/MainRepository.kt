@@ -4,9 +4,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import xaa.werber.pulttaxi.data.entity.UserInfo
+import xaa.werber.pulttaxi.data.local.dao.PultTaxiDao
 import xaa.werber.pulttaxi.data.remote.ApiService
 
-class MainRepository(private val apiService: ApiService) {
+class MainRepository(private val apiService: ApiService, private val pultTaxiDao: PultTaxiDao) {
 
     fun SMSCodeRequest(number: String) {
         apiService.SMSCodeRequest(number).enqueue(object : Callback<String> {
@@ -43,4 +44,6 @@ class MainRepository(private val apiService: ApiService) {
             }
         })
     }
+
+    fun getPhoneNumber()
 }

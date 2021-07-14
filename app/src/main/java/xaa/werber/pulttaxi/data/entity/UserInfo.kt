@@ -9,7 +9,7 @@ data class UserInfo(
     var id: Int = 1,
 
     var status: Int? = null,
-    var phone_number: String? = null,
+    var phone_number: String = "",
     var name: String? = null,
     var email: String? = null,
     var sex: String? = null,
