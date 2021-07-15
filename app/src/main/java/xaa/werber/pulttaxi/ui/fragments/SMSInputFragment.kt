@@ -57,10 +57,8 @@ class SMSInputFragment: Fragment() {
 
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
 
-        viewModel.getUserInfo().observe(this, {
-            if (it.phone_number != "") {
-                showDialogInfo(it)
-            }
+        viewModel.getUserInfo().observe(this, { userInfo ->
+            userInfo?.phone_number?.let { showDialogInfo(userInfo) }
         })
 
         inputSMS()

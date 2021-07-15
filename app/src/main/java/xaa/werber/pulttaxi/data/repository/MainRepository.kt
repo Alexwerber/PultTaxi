@@ -2,7 +2,10 @@ package xaa.werber.pulttaxi.data.repository
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,11 +19,23 @@ class MainRepository(private val apiService: ApiService, private val pultTaxiDao
 
     private var sharedPreferences: SharedPreferences =
         context.getSharedPreferences(TOKEN, Context.MODE_PRIVATE)
+    private lateinit var phone: String
+
+    val userInfo: MediatorLiveData<UserInfo> = MediatorLiveData()
 
     fun getToken(): String? = sharedPreferences.getString(TOKEN, null)
-    fun getUseInfo(): LiveData<UserInfo> = pultTaxiDao.getUserInfo()
+    fun getUseInfo(): LiveData<UserInfo> = userInfo
+
+    fun loadData() {
+        val dbSource = pultTaxiDao.getUserInfo()
+
+        userInfo.addSource(dbSource) {
+            userInfo.value = it
+        }
+    }
 
     fun smsCodeRequest(number: String) {
+        phone = number
         apiService.SMSCodeRequest(number).enqueue(object : Callback<String>{
             override fun onResponse(call: Call<String>, response: Response<String>) {
 
@@ -32,8 +47,8 @@ class MainRepository(private val apiService: ApiService, private val pultTaxiDao
         })
     }
 
-    fun authorization(number: String, password: String) {
-        apiService.authorization(number, password).enqueue(object : Callback<String> {
+    fun authorization(password: String) {
+        apiService.authorization(phone, password).enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     response.body()?.let {
