@@ -5,4 +5,5 @@
     <string name="phone_input">Введите номер вашего телефона"</string>
     <string name="sms_code_hint">Введите код из СМС</string>
     <string name="sms_confirm_button">Готово</string>
+    <string name="input_error">Неверный формат ввода</string>
 </resources>

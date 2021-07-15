@@ -2,6 +2,7 @@ package xaa.werber.pulttaxi.data.remote
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 import xaa.werber.pulttaxi.data.entity.UserInfo
 
@@ -13,7 +14,7 @@ interface ApiService {
     ) : Call<String>
 
     // Авторизация через СМС код
-    @GET("authenticateClients")
+    @POST("authenticateClients")
     fun authorization(
         @Query("phone_number") number: String,
         @Query("password") password: String
