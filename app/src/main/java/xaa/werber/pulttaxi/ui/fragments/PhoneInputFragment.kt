@@ -44,7 +44,7 @@ class PhoneInputFragment : Fragment(R.layout.fragment_phone_input) {
                         .addToBackStack(null)
                         .commit()
                 }
-            } else phone_input_layout.error = "Неверный формат номера"
+            } else phone_input_layout.error = resources.getString(R.string.input_error)
         }
 
     }
